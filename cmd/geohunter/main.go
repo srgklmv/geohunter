@@ -5,7 +5,8 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/gofiber/fiber/v3"
+	"github.com/srgklmv/geohunter/internal/app"
+	"github.com/srgklmv/geohunter/internal/controller"
 )
 
 var logger *slog.Logger
@@ -15,17 +16,10 @@ func main() {
 
 	logger.Info("Hello from Geohunter!")
 
-	app := fiber.New()
+	app := app.New()
+	controller.SetupRoutes(app)
 
-	app.Get("ping", func(fc fiber.Ctx) error {
-		return fc.Status(fiber.StatusOK).JSON("pong")
-	})
-
-	//api := app.Group("api")
-	//api.Post("", nil)
-
-	err := app.Listen("localhost:3000")
-	if err != nil {
+	if err := app.Listen("localhost:3000"); err != nil {
 		panic(fmt.Sprintf("Startup error: %s", err.Error()))
 	}
 }
