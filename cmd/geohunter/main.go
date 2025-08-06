@@ -2,17 +2,14 @@ package main
 
 import (
 	"fmt"
-	"log/slog"
-	"os"
 
 	"github.com/srgklmv/geohunter/internal/app"
 	"github.com/srgklmv/geohunter/internal/controller"
+	"github.com/srgklmv/geohunter/pkg/logger"
 )
 
-var logger *slog.Logger
-
 func main() {
-	logger = slog.New(slog.NewJSONHandler(os.Stdout, nil))
+	logger.Init()
 
 	logger.Info("Hello from Geohunter!")
 

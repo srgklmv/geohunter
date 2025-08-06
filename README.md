@@ -1,5 +1,5 @@
 Roadmap:
-1. Add database and docker
-2. Rent server 
-3. Add deploy
-4. 
+- [ ] Add graceful shutdown.
+- [ ] Add database and docker.
+- [ ] Rent server.
+- [ ] Add deploy.
