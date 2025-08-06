@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log/slog"
 	"os"
 
@@ -16,6 +17,15 @@ func main() {
 
 	app := fiber.New()
 
-	api := app.Group("api")
-	api.Post("", nil)
+	app.Get("ping", func(fc fiber.Ctx) error {
+		return fc.Status(fiber.StatusOK).JSON("pong")
+	})
+
+	//api := app.Group("api")
+	//api.Post("", nil)
+
+	err := app.Listen("localhost:3000")
+	if err != nil {
+		panic(fmt.Sprintf("Startup error: %s", err.Error()))
+	}
 }
