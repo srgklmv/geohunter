@@ -1,0 +1,10 @@
+services:
+  geohunter:
+    build: .
+    restart: on-failure
+    ports:
+      - "3000:3000"
+  postgres:
+    image: postgres:17.5
+    restart: on-failure
+#    environment:

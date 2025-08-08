@@ -13,4 +13,6 @@ WORKDIR /app
 
 COPY --from=build /app/tmp/main /app/main
 
+EXPOSE 3000
+
 CMD ["./main"]
