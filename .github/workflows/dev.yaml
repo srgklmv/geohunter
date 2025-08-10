@@ -1,0 +1,15 @@
+name: dev
+
+on:
+  push:
+    branches:
+      - 'dev'
+
+jobs:
+  deploy_dev:
+    name: Deploy dev environment.
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Connecting to dev stand.
+        run: |
+          echo "$TEST_VARIABLE"
