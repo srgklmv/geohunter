@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Connecting to dev stand.
         run: |
-          echo "$TEST_VARIABLE"
+          echo $TEST_VARIABLE
