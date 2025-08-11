@@ -1,9 +1,9 @@
 echo 'Deploy script started.';
 
 echo $USER;
-echo $REMOTE_ADDR;
+echo $HOST;
 
-ssh -i ./key -o UserKnownHostsFile=./known_hosts $USER@$REMOTE_ADDR << EOF
+ssh -i ./key -o UserKnownHostsFile=./known_hosts $USER@$HOST << EOF
 
   ls;
   cd ..;
