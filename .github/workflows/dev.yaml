@@ -11,10 +11,18 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       -
-        name: Connecting to dev stand.
+        name: Deploy.
         env:
-          TEST_VARIABLE: ${{ vars.TEST_VARIABLE }}
-          TEST_SECRET: ${{ secrets.TEST_SECRET }}
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
+          SSH_USER: ${{ secrets.SSH_USER }}
         run: |
-          echo $TEST_VARIABLE
-          echo $TEST_SECRET
+          echo "$SSH_KEY" > key
+          chmod 600 key
+          
+          ssh -o StrictHostKeyChecking=no -i key $SSH_USER@$SSH_REMOTE_ADDR <<EOF
+            
+            ls;
+          EOF
+          
+          rm -f key
