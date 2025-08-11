@@ -18,7 +18,7 @@ jobs:
           USER: ${{ secrets.SSH_USER }}
         run: |
           echo "$KEY" > key.pem
-          chmod 600 key
+          chmod 600 key.pem
           
           ssh -o StrictHostKeyChecking=no -i key.pem $USER@$REMOTE_ADDR <<EOF
             
