@@ -26,9 +26,9 @@ jobs:
         env:
           KEY: ${{ secrets.SSH_KEY }}
         run: |
-          echo $KEY >> key
+          echo "$KEY" >> key
           chmod 600 key
-#          ssh-keygen -l -f key
+          ssh-keygen -l -f key
 
       - name: Updating known_hosts
         env:
