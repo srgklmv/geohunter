@@ -3,11 +3,9 @@ echo 'Deploy script started.';
 echo $USER;
 echo $HOST;
 
-ssh -i ./key -o UserKnownHostsFile=./known_hosts $USER@$HOST << EOF
+ssh -i ./key -o UserKnownHostsFile=./known_hosts -T $USER@$HOST << EOF
 
-  ls;
-  cd ..;
-  ls;
+  echo TEST
 
 EOF
 
