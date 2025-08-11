@@ -12,10 +12,10 @@ jobs:
     steps:
       -
         name: Deploy.
-        env:
-          KEY: ${{ secrets.SSH_KEY }}
-          REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
-          USER: ${{ secrets.SSH_USER }}
+#        env:
+#          KEY: ${{ secrets.SSH_KEY }}
+#          REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
+#          USER: ${{ secrets.SSH_USER }}
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.SSH_REMOTE_ADDR }}
