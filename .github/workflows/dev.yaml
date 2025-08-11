@@ -16,13 +16,11 @@ jobs:
           KEY: ${{ secrets.SSH_KEY }}
           REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
           USER: ${{ secrets.SSH_USER }}
-        run: |
-          echo "$KEY" > key.pem
-          chmod 600 key.pem
-          
-          ssh -o StrictHostKeyChecking=no -i key.pem $USER@$REMOTE_ADDR <<EOF
-            
-            ls;
-          EOF
-          
-          rm -f key.pem
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_REMOTE_ADDR }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            echo REMOTE_ADDR;
+            echo $USER;
