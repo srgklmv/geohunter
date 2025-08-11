@@ -10,6 +10,9 @@ defaults:
     shell: bash
     working-directory: .
 
+env:
+  SECRET: ${{ secrets.TEST_SECRET }}
+
 jobs:
   deploy_dev:
     name: Deploy dev environment.
@@ -22,6 +25,4 @@ jobs:
         run: chmod +x deploy.sh
 
       - name: Deploy
-        env:
-          SECRET: ${{ secrets.TEST_SECRET }}
         run: ./deploy.sh
