@@ -5,15 +5,16 @@ on:
     branches:
       - 'dev'
 
+env:
+  USER: ${{ secrets.SSH_USER }}
+  REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
+
 jobs:
   deploy_dev:
     name: Deploy dev environment.
     runs-on: ubuntu-22.04
     steps:
       - name: Connecting to dev stand.
-        env:
-          USER: ${{ secrets.SSH_USER }}
-          REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
         run: |
           echo "$USER"
           echo "$REMOTE_ADDR"
