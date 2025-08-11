@@ -32,4 +32,6 @@ jobs:
         env:
           USER: ${{ secrets.SSH_USER }}
           REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
-        run: ./deploy.sh
+        run: |
+          echo $USER;
+          echo $REMOTE_ADDR;
