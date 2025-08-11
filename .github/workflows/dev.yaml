@@ -10,10 +10,12 @@ jobs:
     name: Deploy dev environment.
     runs-on: ubuntu-22.04
     steps:
-      -
-        name: Deploy.
+      - name: Checkout
+        uses: actions/checkout@v2 # Check out your repository code
+
+      - name: Deploy
         env:
           KEY: ${{ secrets.SSH_KEY }}
           REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
           USER: ${{ secrets.SSH_USER }}
-        run: ../../deploy
+        run: ./deploy
