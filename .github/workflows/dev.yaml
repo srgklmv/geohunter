@@ -5,17 +5,23 @@ on:
     branches:
       - 'dev'
 
+defaults:
+  run:
+    shell: bash
+    working-directory: .
+
 jobs:
   deploy_dev:
     name: Deploy dev environment.
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2 # Check out your repository code
+        uses: actions/checkout@v4
 
       - name: Deploy
         env:
           KEY: ${{ secrets.SSH_KEY }}
           REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
           USER: ${{ secrets.SSH_USER }}
-        run: ./deploy
+        run: |
+          ls;
