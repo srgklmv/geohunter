@@ -1,5 +1,8 @@
 echo 'Deploy script started.';
 
+echo $USER;
+echo $REMOTE_ADDR;
+
 ssh -i ./key $USER@$REMOTE_ADDR << EOF
 
   ls;
