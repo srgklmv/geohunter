@@ -29,10 +29,16 @@ jobs:
           echo $KEY >> key
           chmod +r key
 
+      - name: Updating known_hosts
+        env:
+          HOST: ${{ secrets.SSH_REMOTE_ADDR }}
+        run: |
+          ssh-keyscan -H $HOST >> /github/home/.ssh/known_hosts
+
       - name: Connect to remote & deploy
         env:
           USER: ${{ secrets.SSH_USER }}
-          REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
+          HOST: ${{ secrets.SSH_REMOTE_ADDR }}
         run: ./deploy.sh
 
       - name: Remove key file

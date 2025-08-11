@@ -3,7 +3,7 @@ echo 'Deploy script started.';
 echo $USER;
 echo $REMOTE_ADDR;
 
-ssh -i ./key $USER@$REMOTE_ADDR << EOF
+ssh -i ./key -o UserKnownHostsFile=/github/home/.ssh/known_hosts $USER@$REMOTE_ADDR << EOF
 
   ls;
   cd ..;
