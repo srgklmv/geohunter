@@ -10,6 +10,16 @@ defaults:
     shell: bash
     working-directory: .
 
+jobs:
+  deploy_dev:
+    name: Deploy dev environment.
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Connecting to dev stand.
+        run: |
+          echo "$TEST_VARIABLE"
+          echo $TEST_VARIABLE
+
 #jobs:
 #  deploy_dev:
 #    name: Deploy dev environment.
@@ -35,16 +45,3 @@ defaults:
 #        run: |
 #          echo $USER;
 #          echo $REMOTE_ADDR;
-
-jobs:
-  deploy_dev:
-    name: Deploy dev environment.
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Connect to remote & deploy
-        env:
-          USER: ${{ secrets.SSH_USER }}
-          REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
-        run: |
-          echo $USER;
-          echo $REMOTE_ADDR;
