@@ -13,14 +13,14 @@ jobs:
       -
         name: Deploy.
         env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-          SSH_REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
-          SSH_USER: ${{ secrets.SSH_USER }}
+          KEY: ${{ secrets.SSH_KEY }}
+          REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
+          USER: ${{ secrets.SSH_USER }}
         run: |
-          echo "$SSH_KEY" > key
+          echo "$KEY" > key
           chmod 600 key
           
-          ssh -o StrictHostKeyChecking=no -i key $SSH_USER@$SSH_REMOTE_ADDR <<EOF
+          ssh -o StrictHostKeyChecking=no -i key $USER@$REMOTE_ADDR <<EOF
             
             ls;
           EOF
