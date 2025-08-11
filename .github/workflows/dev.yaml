@@ -25,4 +25,5 @@ jobs:
         run: chmod +x deploy.sh
 
       - name: Deploy
-        run: ./deploy.sh
+        run: |
+          echo $SECRET;
