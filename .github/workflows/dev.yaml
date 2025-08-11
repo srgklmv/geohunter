@@ -17,12 +17,12 @@ jobs:
           REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
           USER: ${{ secrets.SSH_USER }}
         run: |
-          echo "$KEY" > key
+          echo "$KEY" > key.pem
           chmod 600 key
           
-          ssh -o StrictHostKeyChecking=no -i key $USER@$REMOTE_ADDR <<EOF
+          ssh -o StrictHostKeyChecking=no -i key.pem $USER@$REMOTE_ADDR <<EOF
             
             ls;
           EOF
           
-          rm -f key
+          rm -f key.pem
