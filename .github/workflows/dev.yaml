@@ -5,13 +5,32 @@ on:
     branches:
       - 'dev'
 
+defaults:
+  run:
+    shell: bash
+    working-directory: .
+
 jobs:
   deploy_dev:
     name: Deploy dev environment.
     runs-on: ubuntu-22.04
+    environment: development
     steps:
-      - name: Connecting to dev stand
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Script permissions setup
+        run: chmod +x deploy.sh
+
+      - name: Cloning ssh key
         env:
-          TEST_SECRET: ${{ secrets.TEST_SECRET }}
+          KEY: ${{ secrets.SSH_KEY }}
         run: |
-          echo "$TEST_SECRET"
+          echo $KEY >> key
+          chmod +r key
+
+      - name: Connect to remote & deploy
+        env:
+          USER: ${{ secrets.SSH_USER }}
+          REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
+        run: ./deploy.sh
