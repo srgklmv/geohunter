@@ -23,7 +23,5 @@ jobs:
 
       - name: Deploy
         env:
-          KEY: ${{ secrets.SSH_KEY }}
-          REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
-          USER: ${{ secrets.SSH_USER }}
+          SECRET: ${{ secrets.TEST_SECRET }}
         run: ./deploy.sh

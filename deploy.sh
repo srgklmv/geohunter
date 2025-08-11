@@ -1,3 +1,5 @@
 echo 'Deploy script started.';
 
-env;
+echo $SECRET;
+
+echo 'Test secret is' $SECRET;
