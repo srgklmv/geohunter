@@ -27,14 +27,14 @@ jobs:
           KEY: ${{ secrets.SSH_KEY }}
         run: |
           echo $KEY >> key
-          chmod +r key
+          chmod 600 key
 
       - name: Updating known_hosts
         env:
           HOST: ${{ secrets.SSH_REMOTE_ADDR }}
         run: |
           ssh-keyscan -H $HOST >> known_hosts
-          chmod +r key
+          chmod 600 known_hosts
 
       - name: Connect to remote & deploy
         env:
