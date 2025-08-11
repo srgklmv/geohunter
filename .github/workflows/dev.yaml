@@ -34,3 +34,7 @@ jobs:
           USER: ${{ secrets.SSH_USER }}
           REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
         run: ./deploy.sh
+
+      - name: Remove key file
+        run: |
+          rm key
