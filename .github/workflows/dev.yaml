@@ -10,9 +10,6 @@ defaults:
     shell: bash
     working-directory: .
 
-env:
-  SECRET: ${{ secrets.TEST_SECRET }}
-
 jobs:
   deploy_dev:
     name: Deploy dev environment.
@@ -21,9 +18,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Script permissions
+      - name: Script permissions setup
         run: chmod +x deploy.sh
 
-      - name: Deploy
+      - name: Cloning ssh key
+        env:
+          KEY: ${{ secrets.SSH_KEY }}
         run: |
-          echo $SECRET;
+          echo $KEY >> key
+          chmod +r key
+
+      - name: Connect to remote & deploy
+        env:
+          USER: ${{ secrets.SSH_USER }}
+          REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
+        run: ./deploy.sh

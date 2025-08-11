@@ -1,5 +1,11 @@
 echo 'Deploy script started.';
 
-echo $SECRET;
+ssh -i ./key $USER@$REMOTE_ADDR << EOF
 
-echo 'Test secret is' $SECRET;
+  ls;
+  cd ..;
+  ls;
+
+EOF
+
+echo 'Deploy script ended.';
