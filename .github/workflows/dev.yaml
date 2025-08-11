@@ -28,6 +28,7 @@ jobs:
         run: |
           echo $KEY >> key
           chmod 600 key
+          ssh-keygen -l -f ~/.ssh/remote_key
 
       - name: Updating known_hosts
         env:
