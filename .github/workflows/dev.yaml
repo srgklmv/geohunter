@@ -21,6 +21,7 @@ jobs:
           host: ${{ secrets.SSH_REMOTE_ADDR }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
+          port: '22'
           script: |
             echo REMOTE_ADDR;
             echo $USER;
