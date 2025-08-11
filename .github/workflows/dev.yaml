@@ -12,6 +12,6 @@ jobs:
     steps:
       - name: Connecting to dev stand
         env:
-          SSH_USER: ${{ secrets.SSH_USER }}
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
         run: |
-          echo "$SSH_USER"
+          echo "$TEST_SECRET"
