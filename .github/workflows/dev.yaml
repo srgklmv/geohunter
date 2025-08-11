@@ -28,7 +28,7 @@ jobs:
         run: |
           echo $KEY >> key
           chmod 600 key
-          ssh-keygen -l -f key
+#          ssh-keygen -l -f key
 
       - name: Updating known_hosts
         env:
