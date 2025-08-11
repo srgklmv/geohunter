@@ -5,42 +5,13 @@ on:
     branches:
       - 'dev'
 
-env:
-  USER: ${{ secrets.SSH_USER }}
-  REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
-
 jobs:
   deploy_dev:
     name: Deploy dev environment.
     runs-on: ubuntu-22.04
     steps:
-      - name: Connecting to dev stand.
+      - name: Connecting to dev stand
+        env:
+          SSH_USER: ${{ secrets.SSH_USER }}
         run: |
-          echo "$USER"
-          echo "$REMOTE_ADDR"
-
-#jobs:
-#  deploy_dev:
-#    name: Deploy dev environment.
-#    runs-on: ubuntu-22.04
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v4
-#
-#      - name: Script permissions setup
-#        run: chmod +x deploy.sh
-#
-#      - name: Cloning ssh key
-#        env:
-#          KEY: ${{ secrets.SSH_KEY }}
-#        run: |
-#          echo $KEY >> key
-#          chmod +r key
-#
-#      - name: Connect to remote & deploy
-#        env:
-#          USER: ${{ secrets.SSH_USER }}
-#          REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
-#        run: |
-#          echo $USER;
-#          echo $REMOTE_ADDR;
+          echo "$SSH_USER"
