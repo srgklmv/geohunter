@@ -33,6 +33,7 @@ jobs:
         env:
           HOST: ${{ secrets.SSH_REMOTE_ADDR }}
         run: |
+          touch /github/home/.ssh/known_hosts
           ssh-keyscan -H $HOST >> /github/home/.ssh/known_hosts
 
       - name: Connect to remote & deploy
