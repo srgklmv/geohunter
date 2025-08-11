@@ -18,6 +18,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Script permissions
+        run: chmod +x deploy.sh
+
       - name: Deploy
         env:
           KEY: ${{ secrets.SSH_KEY }}
