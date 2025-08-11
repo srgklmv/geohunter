@@ -11,9 +11,12 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Connecting to dev stand.
+        env:
+          USER: ${{ secrets.SSH_USER }}
+          REMOTE_ADDR: ${{ secrets.SSH_REMOTE_ADDR }}
         run: |
-          echo "$TEST_VARIABLE"
-          echo $TEST_VARIABLE
+          echo "$USER"
+          echo "$REMOTE_ADDR"
 
 #jobs:
 #  deploy_dev:
