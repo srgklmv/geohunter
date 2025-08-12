@@ -43,6 +43,6 @@ jobs:
           HOST: ${{ secrets.SSH_REMOTE_ADDR }}
         run: ./deploy.sh
 
-      - name: Remove key file
+      - name: Cleanup
         run: |
-          rm key
+          rm key known_hosts

@@ -1,13 +1,16 @@
 echo 'Deploy script started.';
 
-echo $USER;
-echo $HOST;
-
-cat ./key;
-
 ssh -i ./key -o UserKnownHostsFile=./known_hosts -T $USER@$HOST << EOF
 
-  echo TEST
+  cd geohunter;
+  git pull;
+  echo 'Repo pulled.';
+
+  docker-compose up -d --build --force-recreate geohunter;
+  echo 'docker-compose done.';
+
+  docker system prune -af;
+  echo 'Cleanup completed.';
 
 EOF
 
