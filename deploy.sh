@@ -6,6 +6,10 @@ ssh -i ./key -o UserKnownHostsFile=./known_hosts -T $USER@$HOST << EOF
   git pull;
   echo 'Repo pulled.';
 
+  rm .env;
+  echo '$REPO_ENV' >> .env;
+  chmod u+r .env;
+
   docker-compose up -d --build --force-recreate geohunter;
   echo 'docker-compose done.';
 

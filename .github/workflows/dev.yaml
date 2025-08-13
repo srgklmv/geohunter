@@ -41,6 +41,7 @@ jobs:
         env:
           USER: ${{ secrets.SSH_USER }}
           HOST: ${{ secrets.SSH_REMOTE_ADDR }}
+          REPO_ENV: ${{ secrets.REPO_ENV }}
         run: ./deploy.sh
 
       - name: Cleanup

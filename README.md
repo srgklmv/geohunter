@@ -10,3 +10,4 @@ Backlog:
 - [ ] Docs.
 - [ ] Readme.
 - [ ] CORS.
+- [ ] Remove data from server in workflow if possible.
