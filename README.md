@@ -7,3 +7,6 @@ Backlog:
 - [ ] Database secrets > env > DC.
 - [ ] SSL/TLS certs.
 - [ ] Email reg & auth.
+- [ ] Docs.
+- [ ] Readme.
+- [ ] CORS.
