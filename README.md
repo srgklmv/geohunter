@@ -3,8 +3,9 @@
 Backlog:
 - [x] Deploy.
 - [x] Docker & database.
+- [x] Database secrets > env > DC.
+- [ ] Database connection, design for user entity & migrations.
 - [ ] Firewall to server.
-- [ ] Database secrets > env > DC.
 - [ ] SSL/TLS certs.
 - [ ] Email reg & auth.
 - [ ] Docs.
