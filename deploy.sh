@@ -3,6 +3,7 @@ echo 'Deploy script started.';
 ssh -i ./key -o UserKnownHostsFile=./known_hosts -T $USER@$HOST << EOF
 
   cd geohunter;
+  git checkout dev;
   git pull;
   echo 'Repo pulled.';
 
